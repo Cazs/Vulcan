@@ -6,16 +6,14 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Vulcan.DAL
 {
-    public class VulcanTransactionContext : DbContext
+    public class VulcanTransactionReportViewContext : DbContext
     {
-        public VulcanTransactionContext(DbContextOptions<VulcanTransactionContext> options)
+        public VulcanTransactionReportViewContext(DbContextOptions<VulcanTransactionReportViewContext> options)
             : base(options)
         {
         }
 
-        public DbSet<VulcanTransaction> VulcanTransaction { get; set; }
-
-        public DbSet<Vulcan.Models.VulcanTransactionReportView> VulcanTransactionReportView { get; set; } = default!;
+        public DbSet<VulcanTransactionReportView> VulcanTransactionReportView { get; set; }
 
         // public DbSet<VulcanTransaction> Movie { get; set; }
 

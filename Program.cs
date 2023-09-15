@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<VulcanTransactionContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VulcanTransactionContext")));
 
+builder.Services.AddDbContext<VulcanTransactionReportViewContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("VulcanTransactionContext")));
+
 /*builder.Services.Configure<VulcanTransactionContext>(
     builder.Configuration.GetSection("VulcanTransaction"));*/
 

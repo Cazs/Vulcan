@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Report";
+}
+
+<style>
+    th, td {
+        border: 1px solid black;
+    }
+</style>
+
+@* <h1>UploadCSV</h1>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Data;
+@model DataTable
+ <form asp-controller="Home" asp-action="UploadCSV" method="post" enctype="multipart/form-data">
+        <input type="file" name="postedFile" />
+        <input type="submit" value="Import" />
+    </form>
+    @if (Model != null)
+    {
+        <hr />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                @foreach (DataColumn dc in Model.Columns)
+                {
+                    <th>@dc.ColumnName</th>
+                }
+            </tr>
+            @foreach (DataRow dr in Model.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn dc in Model.Columns)
+                    {
+                        <td>@dr[dc.ColumnName]</td>
+                    }
+                </tr>
+            }
+        </table>
+    } *@
+
+<h1>Transaction Report</h1>
+
+@model IEnumerable<Vulcan.Models.VulcanTransactionReportView>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                <p>Branch Code</p>
+            </th>
+            <th>
+                <p>Account Type</p>
+            </th>
+            <th>
+                <p>Transaction Status</p>
+            </th>
+            <th>
+                <p>Total Count</p>
+            </th>
+            <th>
+                <p>Total Amount</p>
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <p>@item.BranchCode</p>
+                </td>
+                <td>
+                    <p>@item.AccountType</p>
+                </td>
+                <td>
+                    <p>@item.Status</p>
+                </td>
+                <td>
+                    <p>@item.TotalCount</p>
+                </td>
+                <td>
+                    <p>@item.TotalAmount</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

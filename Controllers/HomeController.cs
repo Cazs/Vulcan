@@ -23,6 +23,11 @@ namespace Vulcan.Controllers
             return View();
         }
 
+        public IActionResult Report()
+        {
+            return View();
+        }
+
         /*[HttpPost]
         public ActionResult CreateForm(VulcanTransaction membervalues)
         {
