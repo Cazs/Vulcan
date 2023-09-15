@@ -8,7 +8,7 @@
     }
 </style>
 
-<h1>Transactions </h1>
+<h1>Transaction Master</h1>
 
 @model IEnumerable<Vulcan.Models.VulcanTransaction>
 <table class="table" border="1">
@@ -25,18 +25,6 @@
             </th>
             <th>
                 <p>Account Type</p>
-            </th>
-            <th>
-                <p>Transaction Date</p>
-            </th>
-            <th>
-                <p>Amount</p>
-            </th>
-            <th>
-                <p>Status</p>
-            </th>
-            <th>
-                <p>Effective Status Date</p>
             </th>
             <th>
                 <p>Action</p>
@@ -60,21 +48,7 @@
                     <p>@item.AccountType</p>
                 </td>
                 <td>
-                    <p>@item.TransactionDate</p>
-                </td>
-                <td>
-                    <p>@item.Amount</p>
-                </td>
-                <td>
-                        <p>@item.Status</p>
-                </td>
-                <td>
-                    <p>@item.EffectiveStatusDate</p>
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

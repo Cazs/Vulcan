@@ -10,9 +10,6 @@ builder.Services.AddDbContext<VulcanTransactionContext>(options =>
 builder.Services.AddDbContext<VulcanTransactionReportViewContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VulcanTransactionContext")));
 
-/*builder.Services.Configure<VulcanTransactionContext>(
-    builder.Configuration.GetSection("VulcanTransaction"));*/
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

@@ -9,7 +9,6 @@ using System.Web;
 
 namespace Vulcan.Models
 {
-    // [Table("VulcanTransactionReportView")]
     public class VulcanTransactionReportView
     {
         [Key]

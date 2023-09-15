@@ -37,7 +37,14 @@
                 @Html.DisplayFor(modelItem => item.BranchCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AccountType)
+                @if (item.AccountType == 1)
+                {
+                    <p>Current / Cheque</p>
+                }
+                else
+                {
+                    <p>Savings</p>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

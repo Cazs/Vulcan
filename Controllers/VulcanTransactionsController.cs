@@ -40,6 +40,10 @@ namespace Vulcan.Controllers
                 return NotFound();
             }
 
+            TimeSpan difference = vulcanTransaction.EffectiveStatusDate - vulcanTransaction.TransactionDate;
+            var timeBreachedDays = difference.Days;
+            vulcanTransaction.TimeBreached = timeBreachedDays >= 7 ? "Yes" : "No";
+
             return View(vulcanTransaction);
         }
 
@@ -103,42 +107,6 @@ namespace Vulcan.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: VulcanTransactions
-        /*public async Task<IActionResult> Report()
-        {
-            ViewData["Transactions"] = _reportContext.VulcanTransactionReport != null ?
-                          View(await _reportContext.VulcanTransactionReport.ToListAsync()) :
-                          Problem("Entity set 'VulcanTransactionReportContext.VulcanTransactionReport'  is null.");
-            return View();
-        }*/
-
-        // POST: VulcanTransactions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public Task<IActionResult> UploadCsv([Bind("Id")] VulcanTransaction vulcanTransaction)
-        {
-            if (ModelState.IsValid)
-            {
-                /*_context.Add(vulcanTransaction);
-                await _context.SaveChangesAsync();*
-
-                using (var reader = new StreamReader("test.csv"))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                {
-                    var records = csv.GetRecords<dynamic>();
-                    foreach (var record in records)
-                    {
-                        System.Console.WriteLine("Record: " + record);
-                    }
-                }
-
-                return Task.FromResult<IActionResult>(RedirectToAction(nameof(Index)));
-            }
-            return Task.FromResult<IActionResult>(View(vulcanTransaction));
-        }*/
-
         // GET: VulcanTransactions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -156,8 +124,6 @@ namespace Vulcan.Controllers
         }
 
         // POST: VulcanTransactions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id")] VulcanTransaction vulcanTransaction)

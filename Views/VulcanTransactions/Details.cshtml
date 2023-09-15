@@ -4,15 +4,69 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Transaction Details</h1>
+
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                <p>Transaction Date</p>
+            </th>
+            <th>
+                <p>Amount</p>
+            </th>
+            <th>
+                <p>Status</p>
+            </th>
+            <th>
+                <p>Effective Status Date</p>
+            </th>
+            <th>
+                <p>Time Breached</p>
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td>
+                <p>@Model.TransactionDate</p>
+            </td>
+            <td>
+                <p>@Model.Amount</p>
+            </td>
+            <td>
+                @if (@Model.Status == 0) {
+                    <p>Successful</p>
+                }
+                else if (@Model.Status == 30)
+                {
+                    <p>Disputed</p>
+                } else
+                {
+                    <p>Failed</p>
+                }
+            </td>
+            <td>
+                <p>@Model.EffectiveStatusDate</p>
+            </td>
+            <td>
+                @if (@Model.Amount > 500) //  && @Model.TimeBreached != "Yes"
+                {
+                    <p style="color: blue">@Model.TimeBreached</p>
+                }
+                else if (@Model.TimeBreached == "Yes") {
+                    <p style="color: yellow">@Model.TimeBreached</p>
+                }
+                else if (@Model.TimeBreached == "No")
+                {
+                    <p style="color: green">@Model.TimeBreached</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <div>
-    <h4>VulcanTransaction</h4>
-    <hr />
-    <dl class="row">
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

@@ -26,10 +26,6 @@ namespace Vulcan.Controllers
                           View(await _context.VulcanTransactionReportView.ToListAsync()) :
                           Problem("Entity set 'VulcanTransactionReportViewContext.VulcanTransactionReportView'  is null.");
             return View();
-
-            /*return _context.VulcanTransactionReportView != null ? 
-                          View(await _context.VulcanTransactionReportView.ToListAsync()) :
-                          Problem("Entity set 'VulcanTransactionReportViewContext.VulcanTransactionReportView'  is null.");*/
         }
 
         // GET: VulcanTransactionReportViews/Details/5
@@ -57,8 +53,6 @@ namespace Vulcan.Controllers
         }
 
         // POST: VulcanTransactionReportViews/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,BranchCode,AccountType,Status,TotalCount,TotalAmount")] VulcanTransactionReportView vulcanTransactionReportView)
@@ -89,8 +83,6 @@ namespace Vulcan.Controllers
         }
 
         // POST: VulcanTransactionReportViews/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, [Bind("Id,BranchCode,AccountType,Status,TotalCount,TotalAmount")] VulcanTransactionReportView vulcanTransactionReportView)

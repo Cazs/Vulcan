@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -46,13 +47,7 @@ namespace Vulcan.Models
 
         public required DateTime EffectiveStatusDate { get; set; }
 
-        // public HttpPostedFileBase CsvFile { get; set; }
-
-        //To change label title value  
-        /*[DisplayName("Upload File")]
-        public string CsvPath { get; set; }
-
-        public HttpPostedFileBase CsvFile { get; set; }
-        // public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);*/
+        [NotMapped]
+        public string TimeBreached { get; set; }
     }
 }

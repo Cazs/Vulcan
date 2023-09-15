@@ -20,7 +20,14 @@
             @Html.DisplayNameFor(model => model.AccountType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
+            @if (@Model.AccountType == 1)
+            {
+                <p>Current / Cheque</p>
+            }
+            else
+            {
+                <p>Savings</p>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Status)
